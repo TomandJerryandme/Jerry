@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.neuedu.MainActivity">
+
+<!--主页面-->
+
+    <!-- 点击区域，位于底部-->
+    <LinearLayout
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/home_LinearLayout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#AF3939">
+
+            <ImageView
+                android:id="@+id/image_home"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/home_unselected"
+                android:layout_gravity="center"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="首页"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cart_LinearLayout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#493636">
+
+            <ImageView
+                android:id="@+id/image_cart"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/cart_unselected"
+                android:layout_gravity="center"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="购物车"
+                android:textColor="#E0CE69"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/order_LinearLayout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#D8DF0E">
+
+            <ImageView
+                android:id="@+id/image_order"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/order_unselected"
+                android:layout_gravity="center"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="订单"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/center_LinearLayout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#1D47C0">
+
+            <ImageView
+                android:id="@+id/image_center"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/user_unselected"
+                android:layout_gravity="center"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="个人中心"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav">
+
+    </RelativeLayout>
+
+</RelativeLayout>
