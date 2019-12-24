@@ -32,7 +32,7 @@ public class user_login extends AppCompatActivity implements View.OnClickListene
 
         btn_login = (Button) findViewById(R.id.btn_login);
         username = (EditText) findViewById(R.id.edit_username);
-        password = (EditText) findViewById(R.id.edit_username);
+        password = (EditText) findViewById(R.id.edit_password);
         btn_login.setOnClickListener(this);
 
     }
@@ -45,9 +45,12 @@ public class user_login extends AppCompatActivity implements View.OnClickListene
                 String name = username.getText().toString();
                 String pass = password.getText().toString();
 
-                Looper.prepare();
+                //Toast.makeText(user_login.this,name+" "+pass,Toast.LENGTH_LONG).show();
+                /*Looper.prepare();
                 Toast.makeText(user_login.this,name,Toast.LENGTH_LONG).show();
-                Looper.loop();
+                Looper.loop();*/
+
+
 
                 OkHttpUtils.get("http://10.25.132.94:8080/pro/user/login?username="+name+"&password="+pass,new OkHttpCallback(){
                     @Override
@@ -57,11 +60,12 @@ public class user_login extends AppCompatActivity implements View.OnClickListene
                         //解析数据
                         Gson gson = new Gson();
                         ServerResponse<UserVO> serverResponse=gson.fromJson(msg, new TypeToken<ServerResponse<UserVO>>(){}.getType());
+
                         int loginStatus = serverResponse.getStatus();
                         if (loginStatus==0){
                             SharedPreferencesUtil util= SharedPreferencesUtil.getInstance(user_login.this);
-                            /*util.delete("isLogin");
-                            util.delete("user");*/
+                            util.delete("isLogin");
+                            util.delete("user");
                             util.putBoolean("isLogin",true);
                             util.putString("user",gson.toJson(serverResponse.getData()));
                             Boolean isLogin= util.readBoolean("isLogin");

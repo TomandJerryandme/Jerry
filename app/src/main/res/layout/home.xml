@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.neuedu.MainActivity">
+    tools:context="com.neuedu.HomeActivity">
 
 <!--主页面-->
 
@@ -107,10 +107,10 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nav">
-
+        android:layout_above="@id/nav">
     </RelativeLayout>
 
 </RelativeLayout>

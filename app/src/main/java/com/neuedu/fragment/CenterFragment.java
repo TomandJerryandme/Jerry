@@ -1,9 +1,12 @@
 package com.neuedu.fragment;
 
+import android.media.Image;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,13 +19,14 @@ import com.neuedu.vo.UserVO;
 
 public class CenterFragment extends Fragment {
 
+    ImageView user_photo;
     TextView info;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.center_fragment,container,true);
+        View view = inflater.inflate(R.layout.center_fragment,container,false);
 
         return view;
     }
