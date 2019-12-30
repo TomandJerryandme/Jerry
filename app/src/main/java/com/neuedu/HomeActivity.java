@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.neuedu.businessproject.R;
 import com.neuedu.fragment.CartFragment;
+import com.neuedu.fragment.CenterFragment;
 import com.neuedu.fragment.HomeFragment;
 import com.neuedu.fragment.OrderFragment;
 import com.neuedu.fragment.UserCenterFragment;
@@ -50,10 +51,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         cart_LinearLayout = (LinearLayout) findViewById(R.id.cart_LinearLayout);
         center_LinearLayout = (LinearLayout) findViewById(R.id.center_LinearLayout);
 
-        user_photo = findViewById(R.id.user_photo);
-        userInfo = findViewById(R.id.userInfo);
 
-        //userInfo.setOnClickListener(this);
         host_LinearLayout.setOnClickListener(this);
         order_LinearLayout.setOnClickListener(this);
         center_LinearLayout.setOnClickListener(this);
@@ -61,7 +59,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         //无法在这里为该图片进行点击事件的注册
 
-        //user_photo.setOnClickListener(this);
 
         image_cart = (ImageView) findViewById(R.id.image_cart);
         image_center = (ImageView) findViewById(R.id.image_center);
@@ -135,7 +132,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 image_cart.setImageResource(R.mipmap.cart_unselected);
             }else if(fragmentTag.equals(CENTERFRAGMENT_TAG)){
                 //个人中心碎片
-                fragment=new UserCenterFragment();
+                fragment=new CenterFragment();
                 fragmentTransaction.add(fragment,CENTERFRAGMENT_TAG);
                 image_center.setImageResource(R.mipmap.user_selected);
                 image_home.setImageResource(R.mipmap.home_unselected);

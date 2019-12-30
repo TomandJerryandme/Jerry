@@ -9,7 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.neuedu.businessproject.R;
+import com.neuedu.utils.OkHttpCallback;
+import com.neuedu.utils.OkHttpUtils;
+import com.neuedu.utils.SharedPreferencesUtil;
+import com.neuedu.vo.ServerResponse;
+import com.neuedu.vo.UserVO;
 
 public class activity_changeUserMessage extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,13 +58,25 @@ public class activity_changeUserMessage extends AppCompatActivity implements Vie
         btn_edit.setOnClickListener(this);
         btn_userMessageChange.setOnClickListener(this);
 
+
+        UserVO userVO=(UserVO) SharedPreferencesUtil.getInstance(this).readObject("user", UserVO.class);
+
+        //对用户信息界面的TextView设置初始值
+        text_ip.setText(userVO.getIp());
+        text_phone.setText(userVO.getPhone());
+        text_email.setText(userVO.getEmail());
+        text_username.setText(userVO.getUsername());
+        text_regtime.setText(userVO.getCreateTime());
+        edit_username.setText(userVO.getUsername());
+        edit_regtime.setText(userVO.getCreateTime());
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_changeUserMessage:
-                Toast.makeText(activity_changeUserMessage.this,"点击了修改按钮",Toast.LENGTH_LONG).show();
+                //Toast.makeText(activity_changeUserMessage.this,"点击了修改按钮",Toast.LENGTH_LONG).show();
 
                 //对修改的信息进行获取
                 String username = edit_username.getText().toString();
@@ -66,7 +85,23 @@ public class activity_changeUserMessage extends AppCompatActivity implements Vie
                 String ip = edit_ip.getText().toString();
                 String regtime = edit_regtime.getText().toString();
 
-                Toast.makeText(activity_changeUserMessage.this,username+" "+email+" "+phone+" "+ip+" "+regtime,Toast.LENGTH_LONG).show();
+                OkHttpUtils.get("http://10.25.132.94:8080/pro/user/change?username="+username+"&email="+email+"&phone="+phone+"&ip="+ip+"&create_time="+regtime,new OkHttpCallback(){
+                    @Override
+                    public void onFinish(String status, String msg) {
+                        super.onFinish(status, msg);
+
+                        Gson gson = new Gson();
+                        ServerResponse<UserVO> serverResponse=gson.fromJson(msg, new TypeToken<ServerResponse<UserVO>>(){}.getType());
+
+                        if (serverResponse.getStatus()==0){
+                            //修改信息成功
+                            Toast.makeText(activity_changeUserMessage.this,"修改用户信息成功",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+
+                //Toast.makeText(activity_changeUserMessage.this,username+" "+email+" "+phone+" "+ip+" "+regtime,Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.btn_edit:

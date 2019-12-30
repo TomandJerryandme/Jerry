@@ -30,9 +30,9 @@ public class user_login extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
 
-        btn_login = (Button) findViewById(R.id.btn_login);
-        username = (EditText) findViewById(R.id.edit_username);
-        password = (EditText) findViewById(R.id.edit_password);
+        btn_login = findViewById(R.id.btn_login);
+        username = findViewById(R.id.edit_username);
+        password = findViewById(R.id.edit_password);
         btn_login.setOnClickListener(this);
 
     }
@@ -49,8 +49,6 @@ public class user_login extends AppCompatActivity implements View.OnClickListene
                 /*Looper.prepare();
                 Toast.makeText(user_login.this,name,Toast.LENGTH_LONG).show();
                 Looper.loop();*/
-
-
 
                 OkHttpUtils.get("http://10.25.132.94:8080/pro/user/login?username="+name+"&password="+pass,new OkHttpCallback(){
                     @Override

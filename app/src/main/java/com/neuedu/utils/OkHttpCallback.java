@@ -11,7 +11,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class OkHttpCallback implements Callback {
-    private final String TAG = OkHttpCallback.class.getSimpleName();
+    //private final String TAG = OkHttpCallback.class.getSimpleName();
+    private final String TAG = "com.neuedu";
 
     public String url;
     public String result;
